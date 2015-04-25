@@ -12,26 +12,26 @@ exec conky
 
 # set variables {{{
 set $mod Mod4
-set  $1 KP_Home 
-set  $2 KP_Up
-set  $3 KP_Prior
+set  $1 KP_End
+set  $2 KP_Down
+set  $3 KP_Next
 set  $4 KP_Left
 set  $5 KP_Begin
 set  $6 KP_Right
-set  $7 KP_End
-set  $8 KP_Down
-set  $9 KP_Next
+set  $7 KP_Home 
+set  $8 KP_Up
+set  $9 KP_Prior
 set $10 KP_Insert
-set  $W1  1: Files
-set  $W2  2: People
-set  $W3  3: Office
-set  $W4  4: Internet
-set  $W5  5: System
-set  $W6  6: Leisure
-set  $W7  7: Chrome
-set  $W8  8: Network
-set  $W9  9: i3
-set $W10 10: Utils
+set  $W1  "1: Files"
+set  $W2  "2: People"
+set  $W3  "3: Office"
+set  $W4  "4: Browsers"
+set  $W5  "5: System"
+set  $W6  "6: Leisure"
+set  $W7  "7: Chrome"
+set  $W8  "8: Network"
+set  $W9  "9: i3"
+set $W10 "10: Utils"
 # }}}
 
 # 2.4. Opening other applications {{{
@@ -42,7 +42,7 @@ bindsym Menu exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym shift+Menu exec --no-startup-id i3-dmenu-desktop
+bindsym shift+Menu exec --no-startup-id j4-dmenu-desktop
 
 # }}}
 
@@ -85,7 +85,20 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-bindsym $mod+h exec xmessage -nearmouse -file ~/.config/i3/keys_xmessage.txt
+# help
+bindsym $mod+h exec xmessage -nearmouse -file ~/.config/i3/help_files/keys_xmessage.txt
+
+# Volume
+bindsym XF86AudioRaiseVolume exec perl /home/mimosinnet/.config/i3/blocklets/volume.pl up
+bindsym XF86AudioLowerVolume exec perl /home/mimosinnet/.config/i3/blocklets/volume.pl down
+bindsym XF86AudioMute exec perl /home/mimosinnet/.config/i3/blocklets/volume.pl mute
+
+# Print Screen {{{
+bindsym $mod+Print exec Print_Screen root 
+bindsym --release $mod+Shift+Print exec Print_Screen area
+bindsym $mod+Mod1+Print exec Print_Screen delay
+bindsym $mod+Control+Print exec Print_Screen window
+# }}}
 
 # }}}
 
@@ -94,7 +107,7 @@ bindsym $mod+h exec xmessage -nearmouse -file ~/.config/i3/keys_xmessage.txt
 floating_modifier $mod
 # }}}
 
-# Workspaces {{{
+# Workspaces {{{1
 
 # switch to workspace {{{
 bindsym  $1 workspace  $W1
@@ -109,18 +122,6 @@ bindsym  $9 workspace  $W9
 bindsym $10 workspace $W10
 # }}}
 
-# default application on workspace {{{
-bindsym Shift+$1  workspace  $W1; exec pcmanfm
-bindsym Shift+$2  workspace  $W2; exec urxvtc
-bindsym Shift+$3  workspace  $W3; exec lowriter
-bindsym Shift+$4  workspace  $W4; exec firefox
-bindsym Shift+$5  workspace  $W5; exec urxvtc
-bindsym Shift+$6  workspace  $W6; exec xboard
-bindsym Shift+$7  workspace  $W7; exec chromium
-bindsym Shift+$8  workspace  $W8; exec /usr/local/bin/Telegram/Telegram
-bindsym Shift+$9  workspace  $W9; exec gvim
-bindsym Shift+$10 workspace $W10; exec urxvtc
-# }}}
 
 # Moving windows to workspaces {{{
 bindsym Control+$1  move container to workspace  $W1; workspace  $W1
@@ -141,49 +142,49 @@ for_window [class="Quit"] floating enable
 # }}}
 
 # 4.13. Automatically putting clients on specific workspaces {{{
-assign [title="Correu.sh"] 	  $W2
-assign [instance="libreoffice"]	  $W3
-assign [class="Firefox"]	  $W4
-assign [class="Xboard"]		  $W6
-assign [class="Chromium-browser"] $W7
-assign [class="^Telegram$"]  	  $W8
-assign [class="^Conky$"] 	 $W10
+assign [title="Correu\.sh"]  $W2
+assign [Class="libreoffice" title="Sin título"] $W3
+assign [class="Firefox"] $W4
+assign [class="Xboard"]	$W6
+assign [class="Chromium-browser" window_role="browser"] $W7
+assign [class="^Telegram$"] $W8
+assign [class="^Conky$"] $W10
 # }}}
 
 # 4.15 Automatically putting workspaces on specific screens {{{
-workspace  1 output LVDS 
-workspace  2 output LVDS
-workspace  3 output LVDS
-workspace  4 output LVDS
-workspace  5 output LVDS
-workspace  6 output LVDS
-workspace  7 output LVDS
-workspace  8 output LVDS
-workspace  9 output LVDS
-workspace 10 output LVDS
 
-# Moving containers/workspaces to another screen
-bindsym $mod+x move workspace to output right
+workspace  $W1 output DVI-I-1
+workspace  $W2 output DVI-I-1
+workspace  $W3 output DVI-I-1
+workspace  $W4 output DVI-I-1
+workspace  $W5 output DVI-I-1
+workspace  $W6 output DVI-I-1
+workspace  $W7 output DVI-I-1
+workspace  $W8 output DVI-I-1
+workspace  $W9 output DVI-I-1
+workspace $W10 output VGA-0
+
 # }}}
 
 # 4.23. Automatic back-and-forth {{{
-workspace_auto_back_and_forth yes
+# workspace_auto_back_and_forth yes
 # }}}
 
-# }}}
+# 1}}}
 
 # 5. Configuring i3bar {{{1
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+	position top
 	colors {
 		# yellow
 		separator  #FFF000
 		# green
 		statusline #00FF00
 	}
-        status_command i3status
+        status_command i3blocks -c ~/.config/i3/i3blocks.conf
 }
 
 # 1}}}
@@ -238,6 +239,11 @@ bindsym $mod+Shift+Right move right
 
 # }}}
 
+# 6.7. Moving containers/workspaces to RandR outputs {{{
+bindsym $mod+v move container to output right
+bindsym $mod+Shift+v move workspace to output right
+# }}}
+
 # 6.8. Resizing containers/windows {{{
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -247,16 +253,12 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        # bindsym j resize shrink width 10 px or 10 ppt
-        # bindsym k resize grow height 10 px or 10 ppt
-        # bindsym l resize shrink height 10 px or 10 ppt
-        # bindsym ntilde resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left  resize shrink width  10 px or 10 ppt
+        bindsym Down  resize grow   height 10 px or 10 ppt
+        bindsym Up    resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow   width  10 px or 10 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -276,6 +278,124 @@ bindsym $mod+Shift+c restart
 bindsym $mod+Shift+q exec perl /home/mimosinnet/Dades/Scripts/Actius/Quit.pl
 # bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3'  'i3-msg exit'"
 
+# }}}
+
+# 1}}}
+
+# Modes {{{1
+
+# default applications on workspace {{{
+bindsym Shift+$1  workspace  $W1; mode "Files"
+bindsym Shift+$2  workspace  $W2; mode "People"
+bindsym Shift+$3  workspace  $W3; mode "Office"
+bindsym Shift+$4  workspace  $W4; mode "Browsers"
+bindsym Shift+$5  workspace  $W5; mode "System"
+bindsym Shift+$6  workspace  $W6; exec /usr/local/bin/Xboard_Crafty.sh
+bindsym Shift+$7  workspace  $W7; exec chromium
+bindsym Shift+$8  workspace  $W8; mode "Network"
+bindsym Shift+$9  workspace  $W9; exec gvim
+bindsym Shift+$10 workspace $W10; exec urxvtc
+# }}}
+
+# 1 Files {{{
+mode "Files" {
+		bindsym h exec xmessage -nearmouse -file ~/.config/i3/help_files/help_Files.txt
+		bindsym m exec urxvtc -e /usr/local/bin/Munta.sh usb
+		bindsym p exec pcmanfm
+		bindsym v exec urxvtc -e vifm ~/ ~/ 
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+# }}}
+
+# 2 People {{{
+mode "People" {
+	bindsym Shift+m exec xmessage -nearmouse -file ~/.config/i3/help_files/MuttPatternModifier.txt
+	bindsym c exec urxvtc -j -ss -e Entra generatech
+	bindsym h exec xmessage -nearmouse -file ~/.config/i3/help_files/help_People.txt
+	bindsym m exec xmessage -nearmouse -file ~/.config/i3/help_files/MuttLineEditorKeys.txt
+#	bindsym o exec urxvtc -j -ss -e offlineimap 
+	bindsym p exec urxvtc -j -ss -e Privat.sh 
+	bindsym u exec gvim ~/Dades/Documents/Personal/Directori/UAB.txt
+
+	# back to normal: Enter or Escape
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+# }}}
+
+# 3 Office {{{
+mode "Office" {
+		bindsym a exec acroread  
+		bindsym b exec lobase  
+		bindsym c exec localc  
+		bindsym d exec lodraw  
+		bindsym f exec freemind 
+		bindsym h exec xmessage -nearmouse -file ~/.config/i3/help_files/help_Office.txt
+		bindsym i exec loimpress  
+		bindsym l exec loweb  
+		bindsym m exec lomath  
+		bindsym x exec xmind
+		bindsym t exec lofromtemplate  
+		bindsym w exec lowriter 
+		bindsym z exec zathura
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+# }}}
+
+# 4 Browsers {{{
+mode "Browsers" {
+	bindsym d exec dillo
+	bindsym e exec urxvtc -e elinks http://www.google.es 
+	bindsym f exec firefox
+	bindsym h exec xmessage -nearmouse -file ~/.config/i3/help_files/help_Browsers.txt
+	bindsym q exec qupzilla
+	bindsym s exec surf www.google.es
+
+	# back to normal: Enter or Escape
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+
+# }}}
+
+# 5 System {{{
+mode "System" {
+	bindsym Shift+e exec setxkbmap -model pc104 -layout es 
+	bindsym Shift+c exec urxvtd -f 
+	bindsym c exec urxvtc 
+	bindsym e exec urxvtc -geometry 128x42 -e bash -c "su -c elogv" 
+	bindsym g exec glade
+	bindsym h exec xmessage -nearmouse -file ~/.config/i3/help_files/help_System.txt
+	bindsym l exec urxvtc -e vim ~/Dades/Documents/Linux/linux.txt 
+	bindsym m exec xmodmap -e "pointer = 1 2 3 4 5" 
+	bindsym u exec unetbootin 
+	bindsym x exec xterm 
+
+	# back to normal: Enter or Escape
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+# }}}
+
+# 8 Network {{{
+mode "Network" {
+	bindsym h exec xmessage -nearmouse -file ~/.config/i3/help_files/help_Network.txt
+	bindsym i exec urxvtc -e irssi
+	bindsym r exec urxvtc -e rtorrent
+	bindsym t exec /usr/local/bin/Telegram/Telegram
+	bindsym w exec wicd-gtk -n 
+
+	# back to normal: Enter or Escape
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
 # }}}
 
 # 1}}}
