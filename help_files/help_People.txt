@@ -1,0 +1,7 @@
+Shift+m MuttPatternModifier
+c correu 
+h help
+m MuttLineEditorKeys
+o offlineimap 
+p privat.sh 
+u exec gvim ~/Dades/Documents/Personal/Directori/UAB.txt

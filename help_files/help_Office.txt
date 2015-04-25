@@ -1,0 +1,14 @@
+keys
+a acroread  
+b lobase  
+c localc  
+d lodraw  
+f freemind 
+h help
+i loimpress  
+l loweb  
+m lomath  
+x xmind
+t lofromtemplate  
+w lowriter 
+z zathura

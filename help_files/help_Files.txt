@@ -1,0 +1,5 @@
+key	Action
+v	vifm
+p	pcmanfm
+h	help
+ret exit

@@ -1,0 +1,10 @@
+Shift+c console recover
+Shift+e es keyboard layout
+c console
+e elog viewer
+g glade
+h help
+l linux help
+m mouse normal
+u unetbootin 
+x xterm 

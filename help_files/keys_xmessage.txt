@@ -1,0 +1,35 @@
+Keyboard Shortcuts 
+
+		shift		ctrl		S+Ctrl
+<key>		--------------------------------------------------------
+Menu		dmenu		i3dmenu
+
+* Window-Key + <key>
+		shift		ctrl		S+Ctrl
+<key>		--------------------------------------------------------
+ return		terminal	
+ space		foc_toggle	float_toggle
+ arrows		focus 		move
+ 
+ a focus parent focus parent
+ c config	reload		restart
+ d focus child	focus child
+ h help		help
+ l layout	stacking	tabbed		toggle
+ m Maximize	fullscreen
+ q quit		quit-app	quit-i3
+ r Resize	resize
+ s split 	horizontal	vertical
+ v screen	moVe container	moVe workspace
+
+* Window-key + Other Keys
+		key		shift		alt		ctrl   
+<key>		----------------------------------------------------------
+ Print		ScreenShot	AreaShot	DelayShot 	WindowShot
+
+* Numeric Pad
+ Normal		Move to workspace
+ Shift		Go to workspace and exec default application
+ Ctrl		Move container to workspace 
+
+ vim: tabstop=8

@@ -1,0 +1,10 @@
+key
+w wicd
+t Telegram
+i rssi
+r rtorrent
+h help
+
+Also:
+- connman
+- wpa_gui
