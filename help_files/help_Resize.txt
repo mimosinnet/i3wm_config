@@ -1,0 +1,5 @@
+        key       shift
+--------------------------
+h       Help
+Arrows  Resize_10 Resize_1
+
