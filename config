@@ -7,7 +7,7 @@
 
 # Automatically starting applications on i3 startup {{{
 exec urxvtd -q -f -o
-exec conky
+# exec conky
 # }}}
 
 # set variables {{{
@@ -121,7 +121,6 @@ bindsym  $8 workspace  $W8
 bindsym  $9 workspace  $W9
 bindsym $10 workspace $W10
 # }}}
-
 
 # Moving windows to workspaces {{{
 bindsym Control+$1  move container to workspace  $W1; workspace  $W1
@@ -244,29 +243,6 @@ bindsym $mod+v move container to output right
 bindsym $mod+Shift+v move workspace to output right
 # }}}
 
-# 6.8. Resizing containers/windows {{{
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-
-        # same bindings, but for the arrow keys
-        bindsym Left  resize shrink width  10 px or 10 ppt
-        bindsym Down  resize grow   height 10 px or 10 ppt
-        bindsym Up    resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow   width  10 px or 10 ppt
-
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-bindsym $mod+r mode "resize"
-# }}}
 
 # 6.14. Reloading/Restarting/Exiting {{{
 
@@ -284,13 +260,46 @@ bindsym $mod+Shift+q exec perl /home/mimosinnet/Dades/Scripts/Actius/Quit.pl
 
 # Modes {{{1
 
+# 6.8. Resizing containers/windows {{{
+# resize window (you can also use the mouse for that)
+mode "resize" {
+
+		bindsym h exec xmessage -nearmouse -file ~/.config/i3/help_files/help_Resize.txt
+
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+
+        # same bindings, but for the arrow keys
+        bindsym Left  resize shrink width  10 px or 10 ppt
+        bindsym Down  resize grow   height 10 px or 10 ppt
+        bindsym Up    resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow   width  10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Shift+Left  resize shrink width  1 px or 1 ppt
+        bindsym Shift+Down  resize grow   height 1 px or 1 ppt
+        bindsym Shift+Up    resize shrink height 1 px or 1 ppt
+        bindsym Shift+Right resize grow   width  1 px or 1 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+# }}}
+
 # default applications on workspace {{{
 bindsym Shift+$1  workspace  $W1; mode "Files"
 bindsym Shift+$2  workspace  $W2; mode "People"
 bindsym Shift+$3  workspace  $W3; mode "Office"
 bindsym Shift+$4  workspace  $W4; mode "Browsers"
 bindsym Shift+$5  workspace  $W5; mode "System"
-bindsym Shift+$6  workspace  $W6; exec /usr/local/bin/Xboard_Crafty.sh
+bindsym Shift+$6  workspace  $W6; mode "Oci"
 bindsym Shift+$7  workspace  $W7; exec chromium
 bindsym Shift+$8  workspace  $W8; mode "Network"
 bindsym Shift+$9  workspace  $W9; exec gvim
@@ -313,10 +322,10 @@ mode "Files" {
 # 2 People {{{
 mode "People" {
 	bindsym Shift+m exec xmessage -nearmouse -file ~/.config/i3/help_files/MuttPatternModifier.txt
-	bindsym c exec urxvtc -j -ss -e Entra generatech
+	bindsym c exec urxvtc -j -ss -e Correu.sh correu 
 	bindsym h exec xmessage -nearmouse -file ~/.config/i3/help_files/help_People.txt
 	bindsym m exec xmessage -nearmouse -file ~/.config/i3/help_files/MuttLineEditorKeys.txt
-#	bindsym o exec urxvtc -j -ss -e offlineimap 
+	bindsym o exec urxvtc -j -ss -e offlineimap 
 	bindsym p exec urxvtc -j -ss -e Privat.sh 
 	bindsym u exec gvim ~/Dades/Documents/Personal/Directori/UAB.txt
 
@@ -384,6 +393,18 @@ mode "System" {
 }
 # }}}
 
+# 6 Oci {{{
+mode "Oci" {
+	bindsym h exec xmessage -nearmouse -file ~/.config/i3/help_files/help_Oci.txt
+	bindsym s exec scid
+	bindsym x exec /home/mimosinnet/Dades/Scripts/Actius/Xboard_Crafty.sh
+
+	# back to normal: Enter or Escape
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+# }}}
+
 # 8 Network {{{
 mode "Network" {
 	bindsym h exec xmessage -nearmouse -file ~/.config/i3/help_files/help_Network.txt
@@ -399,5 +420,10 @@ mode "Network" {
 # }}}
 
 # 1}}}
+
+# Start Applications {{{
+# exec ~/.config/i3/scripts/Start_Apps.sh
+
+# }}}
 
 # vim:filetype=i3
