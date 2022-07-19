@@ -1,7 +1,6 @@
 key
 w wicd
 t Telegram mimosinnet
-T Telegram nisomim
 i rssi
 r rtorrent
 s Signal
