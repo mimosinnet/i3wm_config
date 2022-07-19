@@ -1,7 +1,0 @@
-Key
-d dillo
-e elinks 
-f firefox
-h help
-q qupzilla
-s surf 

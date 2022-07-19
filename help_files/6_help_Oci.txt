@@ -1,0 +1,9 @@
+a audacity
+e eboard
+g gimp
+h help
+i inkscape
+o openshot
+s shotcut
+x xboard
+v vlc

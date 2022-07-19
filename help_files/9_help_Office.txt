@@ -1,14 +1,17 @@
 keys
-a acroread  
 b lobase  
 c localc  
 d lodraw  
-f freemind 
+f lofromtemplate  
+g gummi
 h help
 i loimpress  
 l loweb  
 m lomath  
-x xmind
-t lofromtemplate  
+p mupdf
+q qpdfview
+t texmaker
 w lowriter 
+W loweb  
+x xmind
 z zathura

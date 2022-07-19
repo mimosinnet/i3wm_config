@@ -2,6 +2,9 @@ Shift+m MuttPatternModifier
 c correu 
 h help
 m MuttLineEditorKeys
+n MuttPatternModifier
 o offlineimap 
-p privat.sh 
+s skypeforlinux
+t teams
+z zoom
 u exec gvim ~/Dades/Documents/Personal/Directori/UAB.txt

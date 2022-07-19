@@ -1,0 +1,8 @@
+Key
+d Dillo
+e Elinks 
+f Firefox
+h help
+o Opera
+s Surf
+t Tor

@@ -1,3 +1,0 @@
-h help
-s scid
-x xboard

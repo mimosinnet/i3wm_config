@@ -1,0 +1,8 @@
+keys
+h	Help
+m Munta usb
+p Pcmanfm
+r Ranger
+s Spacefm
+v	Vifm
+x roX

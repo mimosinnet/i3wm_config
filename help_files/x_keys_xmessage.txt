@@ -1,0 +1,33 @@
+Keyboard Shortcuts 
+
+		<key>           shift		ctrl		S+Ctrl
+		--------------------------------------------------------
+Menu		dmenu		i4-dmenu-desktop
+
+* Window-key + 	<key>           shift		ctrl		S+Ctrl
+        	--------------------------------------------------------
+ return		terminal	
+ space		                foc_toggle	float_toggle
+ arrows		focus 		move
+ Print		ScreenShot	AreaShot	DelayShot 	WindowShot
+ 
+* Window-key + 	<key>           shift		ctrl		S+Ctrl
+        	--------------------------------------------------------
+ a alsa         alsamixer       pavucontrol     pulseudio -k
+ c config	reload		restart
+ f focus        parent          child
+ h help		
+ l layout	stacking	tabbed		toggle
+ m Maximize	fullscreen                      fulls-toggle
+ q Quit         Window	        i3
+ r Resize	resize
+ s split 	horizontal	vertical
+ v moVe 	moVe cont Rigt	moVe cont Left  moVe worksp R   moVe worksp L
+
+* Numeric Pad
+ Normal		Move to workspace
+ Shift		Go to workspace and exec default application
+ Ctrl		Move container to workspace 
+ Shift+W-Key    Move container to worksapace and move to workspace
+
+ vim: tabstop=8 nospell

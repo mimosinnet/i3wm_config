@@ -1,0 +1,5 @@
+c corebird
+g gvim 
+h help
+z zotero
+
